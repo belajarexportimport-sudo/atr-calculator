@@ -801,7 +801,16 @@
 
         // Display calculation results
         function displayResults(service, origin, destination, weight, total, perKg, sla) {
-            document.getElementById('resultService').textContent = service;
+            // Mapping kode service ke nama cantik
+            const SERVICE_NAMES = {
+                'REGPACK': 'Regular Service',
+                'JAGOPACK': 'Fast Service',
+                'BOSSPACK': 'Express Service',
+                'BIGPACK': 'Large Package',
+                'INTERPACK': 'International'
+            };
+
+            document.getElementById('resultService').textContent = SERVICE_NAMES[service] || service;
             document.getElementById('resultRoute').textContent = `${origin} → ${destination}`;
             // Fix: Show exactly what user typed, but append " kg" if it's a number
             // Using Intl.NumberFormat for better display (e.g. 5 not 5.0, 4.5 is 4.5)
